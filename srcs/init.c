@@ -6,11 +6,39 @@
 /*   By: thsembel <thsembel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:20:29 by thsembel          #+#    #+#             */
-/*   Updated: 2021/02/11 23:47:37 by thsembel         ###   ########.fr       */
+/*   Updated: 2021/02/12 21:16:45 by thsembel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/pathfinder.h"
+
+void		init_targets(b_data *data, char **map)
+{
+	int i;
+	int j;
+	int zero;
+ (void)data;
+	i = 0;
+	zero = 0;
+	while (i < data->size_cols)
+	{
+		j = 0;
+		while (j < data->size_rows)
+		{
+			if (map[i][j] == '0' || map[i][j] == 'S' || map[i][j] == 'E')
+			{
+				zero++;
+				if (map[i][j] == 'S')
+					data->s = zero - 1;
+				else if (map[i][j] == 'E')
+					data->e = zero - 1;
+			}
+			j++;
+		}
+		i++;
+	}
+	printf("zero = %d start = %d end = %d\n", zero, data->s, data->e);
+}
 
 int			**init_ind(b_data *data, int **ind)
 {
@@ -40,7 +68,7 @@ int			**init_ind(b_data *data, int **ind)
 t_stop		*set_stops(b_data *data, t_stop *stops)
 {
 	int i;
-	data->e = data->s_len -1;
+	
 	i = 0;
 	while (i < data->s_len)
 	{
@@ -62,7 +90,7 @@ t_stop		*init_stops(b_data *data, t_stop *stops, char **map, int **ind)
 		j = 1;
 		while (j < data->size_rows - 1)
 		{
-			if (map[i][j] == '0')
+			if (map[i][j] == '0' || map[i][j] == 'S' || map[i][j] == 'E')
 			{
 				++data->s_len;
 				stops = (t_stop *)realloc(stops, data->s_len * sizeof(t_stop));
@@ -90,6 +118,7 @@ void		init_data(b_data *data)
 	data->p_len = 0;
 	data->r_len = 0;
 	data->s = 0;
+	data->e = 0;
 	data->s_len = 0;
 	data->path = NULL;
 	data->closed = NULL;

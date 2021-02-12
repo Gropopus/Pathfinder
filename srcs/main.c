@@ -6,7 +6,7 @@
 /*   By: thsembel <thsembel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 13:34:56 by thsembel          #+#    #+#             */
-/*   Updated: 2021/02/11 23:58:09 by thsembel         ###   ########.fr       */
+/*   Updated: 2021/02/12 19:02:45 by thsembel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int				main(int ac, char **av)
 	if ((map = ft_open_file(&data, av[1], map)) == NULL)
 		return (0);
 	init_data(&data);
+	init_targets(&data, map);
 	ind = init_ind(&data, ind);
 	stops = init_stops(&data, stops, map, ind);
 	stops = set_stops(&data, stops);
@@ -148,6 +149,7 @@ int				main(int ac, char **av)
 		data.closed[data.c_len - 1] = data.current;
 		stops = find_path(&data, stops, routes);
 	}
+	printf("start %d end %d\n\n", data.s, data.e);
 	display_result(&data, map, ind);
 	display_path(&data, stops);
 	return (ft_free_exit(&data, stops, routes));

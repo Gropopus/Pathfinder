@@ -6,7 +6,7 @@
 /*   By: thsembel <thsembel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 22:49:35 by thsembel          #+#    #+#             */
-/*   Updated: 2021/02/11 23:48:30 by thsembel         ###   ########.fr       */
+/*   Updated: 2021/02/12 19:01:56 by thsembel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct	a_data
 int				**init_ind(b_data *data, int **ind);
 t_stop			*init_stops(b_data *data, t_stop *stops, char **map, int **ind);
 t_stop			*set_stops(b_data *data, t_stop *stops);
+void			init_targets(b_data *data, char **map);
 void			init_data(b_data *data);
 void			display_result(b_data *data, char **map, int **ind);
 void			display_path(b_data *data, t_stop *stops);
