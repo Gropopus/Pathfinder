@@ -1,6 +1,6 @@
 # Pathfinder
 
-A simpe Pathfinder using A algorithm.
+A simpe Pathfinder using A* algorithm.
 
 It takes a map as single argument.
 
