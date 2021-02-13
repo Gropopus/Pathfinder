@@ -15,3 +15,5 @@ S -> starting position
 E -> ending position
 
 (Run make to build.)
+
+For the moment, it doesn t work with a map bigger than 15 rows/columns.
